@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!--    注入集合(数组)属性-->
+    <bean id="stu" class="com.kuhn.spring5_.collectiontype.Stu">
+<!--        数组注入-->
+        <property name="courses">
+            <array>
+                <value>java课程</value>
+                <value>数据库课程</value>
+            </array>
+        </property>
+
+        <property name="list">
+            <list>
+                <value>张三</value>
+                <value>李四</value>
+            </list>
+        </property>
+
+        <property name="map">
+            <map>
+                <entry key="JAVA" value="java"></entry>
+                <entry key="PYTHON" value="python"></entry>
+            </map>
+        </property>
+
+        <property name="set">
+            <set>
+                <value>Mysql</value>
+                <value>Redis</value>
+            </set>
+        </property>
+
+        <property name="coursesList">
+            <list>
+                <ref bean="course1"/>
+                <ref bean="course2"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="course1" class="com.kuhn.spring5_.collectiontype.Courses">
+        <property name="cname" value="Spring5框架"></property>
+    </bean>
+
+    <bean id="course2" class="com.kuhn.spring5_.collectiontype.Courses">
+        <property name="cname" value="Mybatis框架"></property>
+    </bean>
+
+
+</beans>

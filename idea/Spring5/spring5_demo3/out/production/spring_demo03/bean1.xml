@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd">
+<!--    开启组件扫描-->
+<!--    如果扫描多个包  用逗号隔开-->
+<!--    扫描包上层目录-->
+<!--    base-package="com.kuhn.spring5_.service,com.kuhn.spring5_.dao"-->
+    <context:component-scan base-package="com.kuhn"/>
+
+<!--    扫描配置-->
+<!--    use-default-filters="false"  默认的扫描关闭  这里即不扫描全部内容-->
+<!--    <context:component-scan base-package="com.kuhn" use-default-filters="false">-->
+<!--      type="annotation" 扫描注解   include-filter   expression="org.springframework.stereotype.Service"  只扫描 Service注解 -->
+<!--        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
+<!--    </context:component-scan>-->
+
+<!--    <context:component-scan base-package="com.kuhn">-->
+<!--        exclude-filter不扫描哪些注解-->
+<!--        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
+<!--    </context:component-scan>-->
+</beans>

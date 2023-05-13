@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuhn.mybatis.mapper.ParameterMapper">
+<!--    List<User> getAllUser();-->
+    <select id="getAllUser" resultType="user">
+        select * from t_user;
+    </select>
+<!--    ${} 字符串拼接需要加单引号    #{} 占位符  不需要加占位符-->
+<!--    public User getByUsername(String userName)-->
+<!--    单个参数 #{userName}   #{} 里名字随意(最好是参数名)  在调用时才会替换-->
+    <select id="getByUsername" resultType="user">
+        select * from t_user where username = #{userName}
+    </select>
+<!--    多个参数以arg0,arg1...为键，以参数为值   param1,param2...为键-->
+    <select id="getDemo1" resultType="user">
+        select * from t_user where username = #{arg0} and password = #{arg1}
+    </select>
+
+<!--    以集合 方式查询   #{}里的参数名需要和集合的键名相同-->
+    <select id="getDemo2" resultType="user">
+        select * from t_user where username = #{username} and password = #{password}
+    </select>
+<!--    操作的参数为自定义实体类   #{}里的参数需要和对象的属性名一致-->
+    <insert id="insertDemo3">
+        insert into t_user values(null, #{username}, #{password}, #{age}, #{sex}, #{email})
+    </insert>
+
+    <select id="getDemo4" resultType="user">
+        select * from t_user where username = #{username} and password = #{password}
+    </select>
+</mapper>

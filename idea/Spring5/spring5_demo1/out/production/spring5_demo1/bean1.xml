@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    1、set方法注入属性-->
+<!--    <bean id="user" class="com.kuhn.spring5_.User">-->
+<!--        <property name="name" value="kuhn"/>-->
+<!--        <property name="age" value="22"/>-->
+<!--    </bean>-->
+
+<!--    2、有参构造注入属性-->
+<!--    <bean id="user" class="com.kuhn.spring5_.User">-->
+<!--        <constructor-arg name="name" value="kuhn"/>-->
+<!--        <constructor-arg name="age" value="22"/>-->
+<!--    </bean>-->
+
+<!--    3、 属性注入其他值-->
+<!--    属性为空值-->
+<!--    <bean id="user" class="com.kuhn.spring5_.User">-->
+<!--        <property name="name">-->
+<!--            <null></null>-->
+<!--        </property>-->
+<!--        <property name="age" value="22"></property>-->
+<!--    </bean>-->
+<!--    属性有特殊字符
+1 把<>进行转义 &lt; &gt;
+ 2 把带特殊符号内容写到 CDATA-->
+    <bean id="user" class="com.kuhn.spring5_.User">
+        <property name="name">
+            <value><![CDATA[<<你好>>]]></value>
+        </property>
+        <property name="age" value="22"></property>
+    </bean>
+
+</beans>

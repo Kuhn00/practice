@@ -1,0 +1,5 @@
+#改变默认静态资源路径  即前面需要加上 /res
+#spring:
+#  mvc:
+#    static-path-pattern: res/**
+

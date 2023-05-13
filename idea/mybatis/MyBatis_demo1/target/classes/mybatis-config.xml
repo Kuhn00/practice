@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--    标签的使用是有顺序的-->
+
+<!--   引入properties配置文件-->
+    <properties resource="jdbc.properties"/>
+
+<!--   typeAlias：设置某个具体的类型的别名
+属性：
+type：需要设置别名的类型的全类名
+alias：设置此类型的别名，若不设置此属性，该类型拥有默认的别名，即类名且不区分大小
+写
+若设置此属性，此时该类型的别名只能使用alias所设置的值 -->
+
+    <typeAliases>
+<!--        默认的就为类名 且不区分大小写-->
+<!--        <typeAlias type="com.kuhn.mybatis.pojo.User" alias="user"/>-->
+<!--        以包为单位设置默认别名  且不区分大小写-->
+        <package name="com.kuhn.mybatis.pojo"/>
+    </typeAliases>
+
+
+
+<!-- environments设置连接多个数据库的环境
+       default设置默认使用的环境的id -->
+
+<!--    设置连接数据库的环境-->
+    <environments default="development">
+<!--   environment设置某个具体的环境
+            id 表示连接数据库环境的唯一标识 不能重复-->
+        <environment id="development">
+<!--    transactionManager  设置事务管理方式
+                type="JDBC|MANAGED"
+                type="JDBC"：设置当前环境的事务管理都必须手动处理 JDBC中原生事务管理方式
+                  type="MANAGED"：设置事务被管理，例如spring中的AOP-->
+            <transactionManager type="JDBC"/>
+<!--   dataSource配置数据源   type设置数据源类型 type="POOLED|UNPOOLED|JNDI
+                           type="POOLED"：使用数据库连接池，即会将创建的连接进行缓存，下次使用可以从缓存中直接获取，不需要重新创建
+                            type="UNPOOLED"：不使用数据库连接池，即每次使用连接都需要重新创建
+                             type="JNDI"：调用上下文中的数据源-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+<!--    引入映射文件-->
+    <mappers>
+<!--        <mapper resource="mapper/UserMapper.xml"/>-->
+        <!--
+        以包为单位，将包下所有的映射文件引入核心配置文件
+        注意：此方式必须保证mapper接口和mapper映射文件必须在相同的包下
+        -->
+        <package name="com.kuhn.mybatis.mapper"/>
+    </mappers>
+</configuration>
